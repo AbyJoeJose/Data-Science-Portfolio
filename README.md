@@ -44,11 +44,31 @@ End-to-end credit risk project predicting whether a loan applicant will default 
 
 ---
 
-#### [🗽 NYC Borough Prediction](./NYC-Borough-Prediction/)
-Multiclass classifier predicting which of NYC's 5 boroughs a property belongs to — using 84,548 Property Sales transactions and 6 models (Logistic Regression, Decision Tree, SVC, **Random Forest**, Gradient Boosting, Neural Network). Random Forest achieves the best result: **F1=0.72, Accuracy=76%**.
+#### [🗽 NYC Borough Prediction / Property Price Prediction](./NYC-Borough-Property-Price-Prediction/)
 
-**Tools:** Python · Pandas · Scikit-learn · imbalanced-learn · TensorFlow/Keras · Seaborn  
-**Techniques:** Multiclass Classification · SMOTE · GridSearchCV · Neural Networks · Pipeline
+A two-part ML project applied to **84,548 NYC Property Sales transactions** — first framed as a multiclass classification task, then extended as a regression task on the same dataset and preprocessing pipeline.
+
+**Part 1 — Borough Prediction (Classification):** Predicts which of NYC's 5 boroughs a property belongs to using 6 models (Logistic Regression, Decision Tree, SVC, Random Forest, Gradient Boosting, Neural Network). **Random Forest is the best classifier: F1=0.72, Accuracy=76%.** SMOTE handles the severe class imbalance (Brooklyn 48%, Manhattan 2%).
+
+**Part 2 — Property Price Prediction (Regression):** Predicts sale price after filtering to arm's-length transactions ($10K–$10M, retaining 34,636 of 45,333 cleaned records). Borough becomes an input feature and SALE PRICE becomes the target. 6 regression models + Neural Network trained end-to-end with the same preprocessing pipeline. **Random Forest is the best regressor: R²=0.58, RMSE=$664K, MAE=$339K.**
+
+| Model | Task | Key Metric |
+|-------|------|-----------|
+| Logistic Regression | Classification | Accuracy 63% |
+| Decision Tree | Classification | F1 0.68 · Accuracy 72% |
+| SVC | Classification | Accuracy 63% |
+| **Random Forest** | **Classification** | **F1 0.72 · Accuracy 76%** |
+| Gradient Boosting | Classification | F1 0.67 · Accuracy 73% |
+| Neural Network | Classification | F1 0.68 · Accuracy 74% |
+| Linear Regression (Ridge) | Regression | R²=0.36 · RMSE=$819K |
+| Decision Tree Regressor | Regression | R²=0.51 · RMSE=$718K |
+| SVR | Regression | R²=0.15 · RMSE=$1.05M |
+| **Random Forest Regressor** | **Regression** | **R²=0.58 · RMSE=$664K** |
+| Gradient Boosting Regressor | Regression | R²=0.57 · RMSE=$673K |
+| Neural Network (256→128→64→32) | Regression | R²=0.55 · RMSE=$687K |
+
+**Tools:** Python · Pandas · Scikit-learn · TensorFlow/Keras · imbalanced-learn · Seaborn  
+**Techniques:** Multiclass Classification · Regression · SMOTE · GridSearchCV · Neural Networks · Pipeline · Feature Engineering
 
 ---
 
@@ -130,7 +150,7 @@ Designs and implements a production-style **star-schema data warehouse** for a r
 
 ---
 
-#### [📚 Best Selling Books by 5 Leading Authors (R / Plotly)](./Walmart-Sales-RShiny/)
+#### [📚 Best Selling Books by 5 Leading Authors (R / Plotly)](./Best-Selling-Books/)
 Analyzes Amazon bestselling books to identify the top 5 authors by a composite Score metric (`User.Rating × 1,000 + Reviews`) and ranks their top 5 books each — rendered as a **faceted interactive Plotly bar chart** with hover tooltips showing full title, price, genre, and score.
 
 **Tools:** R · ggplot2 · Plotly · dplyr · RColorBrewer  
