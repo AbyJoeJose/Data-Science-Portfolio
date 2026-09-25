@@ -88,6 +88,34 @@ End-to-end capstone predicting whether a Falcon 9 first stage will land successf
 
 ---
 
+### 💹 Financial Analytics & Risk
+
+---
+
+#### [📈 Market Data Quality Analytics for VaR](./Market-Data-Quality-VaR/)
+Framework that scores market data quality, detects outliers, imputes missing values, and measures how much data defects move Value at Risk in dollars. Applied to a $10,000,000 equally weighted portfolio across equities, two FX pairs and crude oil (2016 to 2026) at 99% confidence. Uncleaned data moved historical simulation VaR by **$13,608 (6.0%)**; the detection and imputation pipeline recovered **92%** of that error.
+
+Three abstract class hierarchies share a single pluggable interface. Any new method is one subclass and nothing else.
+
+| Hierarchy | Implementations |
+|-----------|----------------|
+| `OutlierDetector` | ZScore, ModifiedZScore, RollingZScore, EwmaVol |
+| `Imputer` | ForwardFill, LinearInterpolation, PeerScaled |
+| `VaRModel` | HistoricalSimulation, Parametric, MonteCarlo |
+
+Key findings across 10 sections and 8 exhibits:
+
+- Different defects damage different models in **opposite directions**: bad prints inflate historical simulation VaR but also inflate parametric VaR; staleness leaves historical VaR unchanged but deflates parametric VaR by $4,420 (zero dilution reduces variance without touching the extreme quantile).
+- A fixed z-score threshold caught 60% of injected outliers during volatile periods but only 10% during calm ones. EWMA volatility scaling closed that gap to 65% and 60%, nearly regime-independent.
+- Dirty data can **make a model pass its backtest**: the corrupt panel produced fewer breaches because the inflated VaR threshold screened more days as safe. A model can look compliant because its inputs are wrong.
+- Breach probability given a prior breach was 12.9% against an unconditional 1.4%, evidence for volatility clustering and the case for a GARCH-weighted extension.
+- Data from 6 FRED series (SP500, EUR/USD, JPY/USD, WTI crude, 10yr Treasury, VIX) runs with no network access; the merged panel ships in the repo.
+
+**Tools:** Python · NumPy · pandas · SciPy · Plotly  
+**Techniques:** Market Data Quality Scoring · Outlier Detection · EWMA Volatility · Data Imputation · Historical Simulation VaR · Parametric VaR · Monte Carlo VaR · Kupiec Test · Basel Traffic Light · Financial Time Series
+
+---
+
 ### 📋 Policy & Workforce Analytics
 
 ---
@@ -185,8 +213,9 @@ Integrates PM2.5 air quality data (EPA API), weather observations (NOAA API), an
 | **Languages** | Python · R · SQL |
 | **ML & Modeling** | Scikit-learn · XGBoost · Statsmodels · PyTorch · TensorFlow/Keras · Regression · Classification · Clustering |
 | **NLP & LLMs** | NLTK · HuggingFace Transformers · Gensim · AWS Bedrock · LangChain · FAISS |
-| **Data & Databases** | Pandas · NumPy · MySQL · SQLite · ETL · Star Schema · Data Warehousing |
+| **Data & Databases** | Pandas · NumPy · SciPy · MySQL · SQLite · ETL · Star Schema · Data Warehousing |
 | **Visualization** | Matplotlib · Seaborn · Plotly · Folium · ggplot2 · R Shiny |
+| **Financial & Risk Analytics** | Market Data Quality Scoring · Value at Risk (VaR) · Kupiec Test · Basel Traffic Light · EWMA Volatility · Financial Time Series |
 | **Tools** | Jupyter Notebook · Git · GitHub · Google Colab · AWS |
 
 ---
