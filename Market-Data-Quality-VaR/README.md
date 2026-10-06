@@ -2,10 +2,14 @@
 
 A framework that scores market data quality, detects outliers, imputes missing values, and measures how much the defects move Value at Risk in dollars.
 
-Built in Python with NumPy, pandas, SciPy and Plotly. Three class hierarchies, ten sections, eight exhibits, all from public Federal Reserve data.
+Built in Python with NumPy, pandas, SciPy and Plotly. Three class hierarchies, ten sections, ten exhibits, all from public Federal Reserve data.
 
 
 **Aby Joe Jose** | [GitHub](https://github.com/AbyJoeJose) | [Portfolio](https://abyjoejose.github.io/Data-Science-Portfolio) | [LinkedIn](https://linkedin.com/in/aby-joe-jose-88959021b) | abyjoejose00@gmail.com
+
+![Market data quality and its effect on Value at Risk](summary_exhibit.png)
+
+*Uncleaned data moved historical simulation VaR by $13,608 on a $10M book. The cleaning pipeline recovered 92% of that error.*
 
 ## The question
 
