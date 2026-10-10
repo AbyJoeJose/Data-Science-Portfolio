@@ -199,7 +199,7 @@ Interactive R Shiny dashboard visualizing Walmart customer purchase amounts by p
 ---
 
 #### [🌫️ Weather & Air Quality Data Integration (NYC)](./Weather-Air-Quality-NY/)
-Integrates PM2.5 air quality data (EPA API), weather observations (NOAA API), and wind direction (Open-Meteo API) for Albany, Buffolo, Syracuse, NY into a normalized MySQL database using SQLAlchemy with `ON DUPLICATE KEY UPDATE`. Reveals the relationship between meteorological conditions and pollution levels through 5 visualizations including polar plots and seasonal analysis.
+Integrates PM2.5 air quality data (EPA API), weather observations (NOAA API), and wind direction (Open-Meteo API) for Albany, Syracuse, NY into a normalized MySQL database using SQLAlchemy with `ON DUPLICATE KEY UPDATE`. Reveals the relationship between meteorological conditions and pollution levels through 5 visualizations including polar plots and seasonal analysis.
 
 **Tools:** Python · Pandas · Requests · SQLAlchemy · MySQL · Matplotlib  
 **Techniques:** REST API Integration · ETL · Relational Database Design · Environmental Data Analysis
